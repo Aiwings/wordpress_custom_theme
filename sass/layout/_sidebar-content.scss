@@ -1,0 +1,19 @@
+.site-content {
+	display: flex;
+	flex-direction: row-reverse;
+	.widget-area {
+		overflow: hidden;
+		width: $size__site-sidebar;
+		flex-grow: 0;
+	}
+	.content-area {
+		flex:1;
+	}
+}
+
+.site-footer {
+	clear: both;
+	width: $size__site-main;
+}
+
+@import "no-sidebar";
