@@ -110,8 +110,8 @@ function _portfolio_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'portfolio' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer-widget', 'portfolio' ),
@@ -119,8 +119,8 @@ function _portfolio_widgets_init() {
 		'description'   => esc_html__( 'Footer Widget Zone', 'portfolio' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', '_portfolio_widgets_init' );
@@ -133,6 +133,7 @@ function _portfolio_scripts() {
 	wp_enqueue_style( 'portfolio-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/js/navigation.js', 'jquery', '20151215', true );
+
 
 	wp_enqueue_script( 'portfolio-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 

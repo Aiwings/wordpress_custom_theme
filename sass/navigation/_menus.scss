@@ -1,6 +1,10 @@
+.main-navigation,.menu-main-container, .nav-menu {
+	height: 100%;
+}
 .main-navigation {
 	flex-grow:1;
-	.menu-menu-principal-container {
+	
+	.menu-menu-main-container {
 		display: flex;
 		justify-content: end;
 		@include mobile {
@@ -9,46 +13,12 @@
 
 	}
 
-	margin:auto;
 	ul {
 		display: none;
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
-		
-
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
-
-			ul {
-				left: -999em;
-				top: 0;
-			}
-
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			a {
-				width: 200px;
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
+		justify-content: space-between;
 		li:hover > ul,
 		li.focus > ul {
 			left: auto;
@@ -56,21 +26,19 @@
 	}
 
 	li {
-		padding:0 16px;
-		&:hover > a,
-		&.focus > a {
-		}
+		height: 100%;
+		display: flex;
 	}
 
 	a {
+		margin:auto;
 		display: block;
 		text-decoration: none;
 	}
 
 	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
+	.current-menu-item > a {
+		border-bottom: 1px inset royalblue;
 	}
 }
 .menu-toggle {
@@ -92,7 +60,7 @@
 		display: none;
 	}
 	.main-navigation ul {
-		display: inline-flex;
+		display: flex;
 	}
 }
 

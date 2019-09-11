@@ -332,7 +332,6 @@ body, button, input, select, optgroup, textarea {
 }
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  color: red;
 }
 p {
   margin-bottom: 1.5em;
@@ -477,13 +476,16 @@ textarea {
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
 }
 .site-header .header-wrapper {
+  max-height: 80px;
   max-width: 1280px;
+  height: 100%;
   margin: auto;
   display: flex;
 }
 @media (max-width: 599px) {
   .site-header .header-wrapper {
     flex-wrap: wrap;
+    max-height: 50px;
   }
 }
 .site-header .header-wrapper .site-branding {
@@ -493,7 +495,6 @@ textarea {
 @media (max-width: 599px) {
   .site-header .header-wrapper .site-branding {
     flex: 1 0 85%;
-    max-height: 50px;
   }
 }
 .site-header .header-wrapper .site-branding p {
@@ -506,22 +507,16 @@ textarea {
   text-decoration: none;
 }
 .site-header .header-wrapper .site-branding .custom-logo-link {
-  margin: 3px 8px;
+  flex: 0 0 20%;
   text-align: center;
 }
-@media (max-width: 599px) {
-  .site-header .header-wrapper .site-branding .custom-logo-link {
-    margin: 0;
-  }
-}
 .site-header .header-wrapper .site-branding .custom-logo-link img {
-  flex: 1 1 20%;
-  max-height: 80px;
+  padding: 3px 0;
   width: auto;
+  height: 100%;
 }
 @media (max-width: 599px) {
   .site-header .header-wrapper .site-branding .custom-logo-link img {
-    height: 100%;
     padding: 3px;
   }
 }
@@ -532,6 +527,7 @@ textarea {
 .site-footer {
   background-color: #fff;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  margin-top: auto;
 }
 /*--------------------------------------------------------------
  # Navigation
@@ -541,12 +537,13 @@ textarea {
  --------------------------------------------------------------*/
 a {
   color: royalblue;
+  text-decoration: none;
 }
 a:visited {
-  color: purple;
+  color: navy;
 }
 a:hover, a:focus, a:active {
-  color: midnightblue;
+  color: SlateBlue;
 }
 a:focus {
   outline: thin dotted;
@@ -557,16 +554,18 @@ a:hover, a:active {
 /*--------------------------------------------------------------
  ## Menus
  --------------------------------------------------------------*/
+.main-navigation, .menu-main-container, .nav-menu {
+  height: 100%;
+}
 .main-navigation {
   flex-grow: 1;
-  margin: auto;
 }
-.main-navigation .menu-menu-principal-container {
+.main-navigation .menu-menu-main-container {
   display: flex;
   justify-content: end;
 }
 @media (max-width: 599px) {
-  .main-navigation .menu-menu-principal-container {
+  .main-navigation .menu-menu-main-container {
     justify-content: start;
   }
 }
@@ -575,33 +574,22 @@ a:hover, a:active {
   list-style: none;
   margin: 0;
   padding-left: 0;
-}
-.main-navigation ul ul {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 100%;
-  left: -999em;
-  z-index: 99999;
-}
-.main-navigation ul ul ul {
-  left: -999em;
-  top: 0;
-}
-.main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
-  left: 100%;
-}
-.main-navigation ul ul a {
-  width: 200px;
+  justify-content: space-between;
 }
 .main-navigation ul li:hover > ul, .main-navigation ul li.focus > ul {
   left: auto;
 }
 .main-navigation li {
-  padding: 0 16px;
+  height: 100%;
+  display: flex;
 }
 .main-navigation a {
+  margin: auto;
   display: block;
   text-decoration: none;
+}
+.main-navigation .current_page_item > a, .main-navigation .current-menu-item > a {
+  border-bottom: 1px inset royalblue;
 }
 .menu-toggle {
   border: none;
@@ -615,7 +603,7 @@ a:hover, a:active {
     display: none;
   }
   .main-navigation ul {
-    display: inline-flex;
+    display: flex;
   }
 }
 .site-main .comment-navigation, .site-main .posts-navigation, .site-main .post-navigation {
@@ -634,24 +622,41 @@ a:hover, a:active {
 /*--------------------------------------------------------------
  # Layout
  --------------------------------------------------------------*/
-.site-content {
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+#page {
+  height: 100%;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
 }
-.site-content .widget-area {
+.site-content .wrapper {
+  display: flex;
+}
+.site-content .wrapper .content-area {
+  flex: 1 1 75%;
+}
+#secondary {
+  border-left: 1px solid #d1d1e5;
   overflow: hidden;
-  width: 20%;
-  flex-grow: 0;
+  flex: 1 0 25%;
+  margin-top: 7px;
 }
-.site-content .content-area {
-  flex: 1;
+#secondary section {
+  padding-left: 7px;
+  border-bottom: 1px solid #d1d1e5;
+}
+#secondary section ul {
+  margin: 0 auto;
+  list-style-type: none;
+  display: inline-flex;
+  flex-direction: column;
 }
 .site-footer {
-  clear: both;
   width: 100%;
 }
 .no-sidebar .content-area, .page-template-page_full_width .content-area {
-  float: none;
   margin-left: auto;
   margin-right: auto;
 }
@@ -734,11 +739,23 @@ a:hover, a:active {
  # Widgets
  --------------------------------------------------------------*/
 .widget {
-  margin: 0 0 1.5em;
+  padding-bottom: 4px;
   /* Make sure select elements fit in widgets. */
 }
 .widget select {
   max-width: 100%;
+}
+.widget_search {
+  border-bottom: none !important;
+}
+.widget_search h4 {
+  display: none;
+}
+.widget_search div {
+  display: flex;
+}
+.widget_search div input {
+  flex: 1 1 90%;
 }
 /*--------------------------------------------------------------
  # Content
@@ -754,9 +771,6 @@ a:hover, a:active {
   margin: auto;
   display: flex;
 }
-.post, .page {
-  margin: 0 0 1.5em;
-}
 .updated:not(.published) {
   display: none;
 }
@@ -765,7 +779,6 @@ a:hover, a:active {
 }
 .page-links {
   clear: both;
-  margin: 0 0 1.5em;
 }
 /*--------------------------------------------------------------
  ## Comments

@@ -1,8 +1,21 @@
 .widget {
-	margin: 0 0 1.5em;
+	padding-bottom: 4px;
 
 	/* Make sure select elements fit in widgets. */
 	select {
 		max-width: 100%;
 	}
+}
+.widget_search {
+	h4 {
+		display: none;
+	}
+	div {
+		display: flex;
+		input {
+			flex : 1 1 90%;
+
+		}
+	}
+	border-bottom: none !important;
 }
