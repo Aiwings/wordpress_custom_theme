@@ -1,0 +1,38 @@
+.home {
+    h1 {
+        display: none;
+    }
+    .group-head {
+    
+        background : url(inc/media/cover.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: 0 0;
+        color: #dce0d9;
+        >div {
+            padding: 40px 0;
+            background-color: rgba(45, 55, 72,0.8);
+            img {
+                border-radius: 50%;
+            }
+            .first-line {
+                font-size:18px;
+            }
+            .wp-block-column {
+                display: flex;
+                p, ul {
+                    width: 60%;
+                    margin: auto;
+                }
+            }   
+        }
+    }   
+    .blocks-gallery-item {
+        figcaption {
+            font-size:18px;
+        }
+        
+    } 
+    
+}
+

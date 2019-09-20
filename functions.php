@@ -6,6 +6,9 @@
  *
  * @package portfolio
  */
+remove_filter( 'the_content', 'wpautop' );
+// OR
+remove_filter( 'the_excerpt', 'wpautop' );
 
 if ( ! function_exists( '_portfolio_setup' ) ) :
 	/**
@@ -83,6 +86,7 @@ if ( ! function_exists( '_portfolio_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', '_portfolio_setup' );
 
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -133,9 +137,9 @@ function _portfolio_scripts() {
 	wp_enqueue_style( 'portfolio-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/js/navigation.js', 'jquery', '20151215', true );
-
-
+	
 	wp_enqueue_script( 'portfolio-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'homepage', get_template_directory_uri() . '/js/homepage.js', 'jquery', '20190920', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -176,4 +180,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
+
 

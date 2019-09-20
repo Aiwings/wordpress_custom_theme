@@ -869,6 +869,54 @@ embed, iframe, object {
 .gallery-columns-9 .gallery-item {
   max-width: 11.11%;
 }
+.blocks-gallery-item figure {
+  overflow: hidden;
+}
+.blocks-gallery-item figure img {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  opacity: 1;
+}
+.blocks-gallery-item figure img:hover {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.8;
+}
 .gallery-caption {
   display: block;
+}
+/*--------------------------------------------------------------
+ # HomePage
+ --------------------------------------------------------------*/
+.home h1 {
+  display: none;
+}
+.home .group-head {
+  background: url(inc/media/cover.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0 0;
+  color: #dce0d9;
+}
+.home .group-head > div {
+  padding: 40px 0;
+  background-color: rgba(45, 55, 72, 0.8);
+}
+.home .group-head > div img {
+  border-radius: 50%;
+}
+.home .group-head > div .first-line {
+  font-size: 18px;
+}
+.home .group-head > div .wp-block-column {
+  display: flex;
+}
+.home .group-head > div .wp-block-column p, .home .group-head > div .wp-block-column ul {
+  width: 60%;
+  margin: auto;
+}
+.home .blocks-gallery-item figcaption {
+  font-size: 18px;
 }
