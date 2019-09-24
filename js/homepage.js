@@ -1,7 +1,10 @@
 ( function($) { 
     $(window).scroll(function(){
         var scroll_pos =  window.scrollY;
-        $("#group-head").css({
+        if( window.outerWidth < 1200) {
+            return;
+        } 
+        $("#scrollbg").css({
             'background-position-y':-scroll_pos +'px'
         });
     });

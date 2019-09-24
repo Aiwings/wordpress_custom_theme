@@ -482,7 +482,7 @@ textarea {
   margin: auto;
   display: flex;
 }
-@media (max-width: 599px) {
+@media (max-width: 900px) {
   .site-header .header-wrapper {
     flex-wrap: wrap;
     max-height: 50px;
@@ -491,17 +491,23 @@ textarea {
 .site-header .header-wrapper .site-branding {
   display: flex;
   flex: 1 0 auto;
+  height: 100%;
 }
-@media (max-width: 599px) {
+@media (max-width: 900px) {
   .site-header .header-wrapper .site-branding {
-    flex: 1 0 85%;
+    flex: 0 0 90%;
   }
 }
 .site-header .header-wrapper .site-branding p {
   flex: 1 1 80%;
   margin: auto;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 18px;
+}
+@media (max-width: 599px) {
+  .site-header .header-wrapper .site-branding p {
+    font-size: 16px;
+  }
 }
 .site-header .header-wrapper .site-branding p a {
   text-decoration: none;
@@ -541,9 +547,11 @@ a {
 }
 a:visited {
   color: navy;
+  border-color: SlateBlue;
 }
 a:hover, a:focus, a:active {
   color: SlateBlue;
+  border-color: SlateBlue;
 }
 a:focus {
   outline: thin dotted;
@@ -564,7 +572,7 @@ a:hover, a:active {
   display: flex;
   justify-content: end;
 }
-@media (max-width: 599px) {
+@media (max-width: 900px) {
   .main-navigation .menu-menu-main-container {
     justify-content: start;
   }
@@ -575,6 +583,7 @@ a:hover, a:active {
   margin: 0;
   padding-left: 0;
   justify-content: space-between;
+  padding: 0 15px;
 }
 .main-navigation ul li:hover > ul, .main-navigation ul li.focus > ul {
   left: auto;
@@ -592,13 +601,23 @@ a:hover, a:active {
   border-bottom: 1px inset royalblue;
 }
 .menu-toggle {
+  height: 100%;
   border: none;
   background: none;
   outline: none;
-  flex: 1 0 15%;
+  flex: 1 0 10%;
 }
 /* Small menu. */
-@media screen and (min-width: 37.5em) {
+.menu-toggle, .main-navigation.toggled {
+  z-index: 999999;
+}
+.menu-toggle ul li, .main-navigation.toggled ul li {
+  background-color: white;
+}
+.site-content {
+  z-index: 98;
+}
+@media (min-width: 900px) {
   .menu-toggle {
     display: none;
   }
@@ -869,6 +888,12 @@ embed, iframe, object {
 .gallery-columns-9 .gallery-item {
   max-width: 11.11%;
 }
+@media (max-width: 1200px) {
+  .wp-block-gallery .blocks-gallery-image, .wp-block-gallery .blocks-gallery-item {
+    width: 100%;
+    margin: 5px;
+  }
+}
 .blocks-gallery-item figure {
   overflow: hidden;
 }
@@ -893,29 +918,66 @@ embed, iframe, object {
 .home h1 {
   display: none;
 }
-.home .group-head {
-  background: url(inc/media/cover.jpg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: 0 0;
-  color: #dce0d9;
+@media (min-width: 600px) {
+  .home .entry-header {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+  }
 }
-.home .group-head > div {
+@media (min-width: 600px) and (max-width: 599px) {
+  .home .entry-header {
+    background-position-x: 50%;
+    background-size: contain;
+  }
+}
+.home .entry-header > div {
   padding: 40px 0;
-  background-color: rgba(45, 55, 72, 0.8);
+  background-color: #2d3748 cc;
 }
-.home .group-head > div img {
+.home .entry-header > div > p {
+  text-align: center;
+  margin: auto;
+}
+@media (min-width: 600px) {
+  .home .entry-header > div > p {
+    width: 50%;
+  }
+}
+.home .entry-header > div img {
   border-radius: 50%;
 }
-.home .group-head > div .first-line {
-  font-size: 18px;
+@media (max-width: 1200px) {
+  .home .entry-header > div p, .home .entry-header > div ul {
+    padding: 10px;
+  }
 }
-.home .group-head > div .wp-block-column {
+.home .entry-header > div .wp-block-column {
   display: flex;
 }
-.home .group-head > div .wp-block-column p, .home .group-head > div .wp-block-column ul {
-  width: 60%;
-  margin: auto;
+@media (min-width: 1200px) {
+  .home .entry-header > div .wp-block-column p, .home .entry-header > div .wp-block-column ul {
+    width: 60%;
+    margin: auto;
+  }
+}
+@media (max-width: 1200px) {
+  .home .entry-header > div .wp-block-column p, .home .entry-header > div .wp-block-column ul {
+    width: 80%;
+  }
+}
+@media (min-width: 600px) {
+  .home .entry-header > div .wp-block-column p, .home .entry-header > div .wp-block-column ul {
+    margin: auto;
+  }
+}
+@media (max-width: 599px) {
+  .home .entry-header > div .wp-block-column p {
+    text-align: center;
+  }
+  .home .entry-header > div .wp-block-column p, .home .entry-header > div .wp-block-column ul {
+    width: 100%;
+  }
 }
 .home .blocks-gallery-item figcaption {
   font-size: 18px;

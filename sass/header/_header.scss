@@ -8,23 +8,26 @@
         height: 100%;
         margin:auto;
         display:flex;
-        @include mobile {
+        @include tab_ls_max {
             flex-wrap:wrap;
             max-height: 50px;
         }
         .site-branding {
             display: flex;
             flex:1 0 auto;
+            height: 100%;
 
-            @include mobile {
-                flex:1 0 85%;
-                
+            @include tab_ls_max{
+                flex: 0 0 90%;
             }
             p {
                 flex:1 1 80%;
                 margin:auto;
                 font-weight: bold;
-                font-size:1.2rem;
+                font-size:18px;
+                @include mobile {
+                    font-size:16px;
+                }
                 a {
                     text-decoration: none;
                 }

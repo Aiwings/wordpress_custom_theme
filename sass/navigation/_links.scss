@@ -3,11 +3,13 @@ a {
 	text-decoration: none;
 	&:visited {
 		color: $color__link-visited;
+		border-color: $color__link-hover;
 	}
 	&:hover,
 	&:focus,
 	&:active {
 		color: $color__link-hover;
+		border-color: $color__link-hover;
 	}
 	&:focus {
 		outline: thin dotted;

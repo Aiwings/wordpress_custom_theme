@@ -168,6 +168,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Format Custom Fields
+ */
+require get_template_directory() . '/inc/format.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -180,6 +185,16 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+/**
+ * Format text into HTML(lists and strong ) 
+ */
+function _portfolio_homeformat($p)  {
+	$p = _portfolio_listformat($p);
+	$p = _portfolio_strongformat($p);
+	$p = _portfolio_jumplineformat($p);
+	return $p;
+}
+
 
 
 

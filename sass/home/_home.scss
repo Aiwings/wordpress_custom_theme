@@ -2,31 +2,69 @@
     h1 {
         display: none;
     }
-    .group-head {
-    
-        background : url(inc/media/cover.jpg);
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-position: 0 0;
-        color: #dce0d9;
+    .entry-header{
+        @include not_mobile {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            @include mobile {
+                background-position-x: 50%;
+                background-size: contain;
+            }
+        }
         >div {
-            padding: 40px 0;
-            background-color: rgba(45, 55, 72,0.8);
+                padding: 40px 0;    
+                background-color: #2d3748cc;
+            
+                >p {
+                    text-align: center;
+                    @include not_mobile {
+                        width:50%;
+                    }
+                  
+                   
+                    margin:auto;
+                }
+            
             img {
                 border-radius: 50%;
             }
-            .first-line {
-                font-size:18px;
+            @include not_desktop {
+                p,ul {
+                    padding: 10px;
+                }
             }
             .wp-block-column {
                 display: flex;
                 p, ul {
-                    width: 60%;
-                    margin: auto;
+                    @include desktop {
+                        width: 60%;
+                        margin: auto;
+                    }
+                }
+                @include not_desktop {
+                    p,ul {
+                        width: 80%;
+                        
+                    }
+                }
+                @include not_mobile {
+                    p,ul {
+                        margin:auto;
+                    }
+                }
+                @include mobile {
+                    p {
+                        text-align: center;
+                    }
+                    p,ul {
+                        width:100%;
+                    } 
                 }
             }   
         }
-    }   
+    }
+
     .blocks-gallery-item {
         figcaption {
             font-size:18px;

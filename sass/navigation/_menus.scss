@@ -7,7 +7,7 @@
 	.menu-menu-main-container {
 		display: flex;
 		justify-content: end;
-		@include mobile {
+		@include tab_ls_max {
 			justify-content: start;
 		}
 
@@ -19,6 +19,7 @@
 		margin: 0;
 		padding-left: 0;
 		justify-content: space-between;
+		padding: 0 15px;
 		li:hover > ul,
 		li.focus > ul {
 			left: auto;
@@ -42,20 +43,30 @@
 	}
 }
 .menu-toggle {
+	height:100%;
 	border:none;
 	background: none;
 	outline:none;
-	flex:1 0 15%;
-	
+	flex:1 0 10%;
 }
 
 /* Small menu. */
 .menu-toggle,
-.main-navigation.toggled ul {
+.main-navigation.toggled  {
+	z-index: 999999;
+	ul {
+		li {
+			background-color: white;
+		}
+		
+	}
 	
 }
+.site-content {
+	z-index: 98;
+}
 
-@media screen and (min-width: 37.5em) {
+@include tab_ls_min{
 	.menu-toggle {
 		display: none;
 	}

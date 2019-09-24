@@ -16,6 +16,12 @@
 	}
 
 }
+@include not_desktop {
+	.wp-block-gallery .blocks-gallery-image, .wp-block-gallery .blocks-gallery-item {
+		width: 100%;
+		margin:5px;
+	}
+}
 .blocks-gallery-item {
 	figure {
 		overflow: hidden;
