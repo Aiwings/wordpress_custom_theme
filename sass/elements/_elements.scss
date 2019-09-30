@@ -1,5 +1,6 @@
 html {
 	box-sizing: border-box;
+
 }
 
 *,
@@ -9,11 +10,12 @@ html {
 }
 
 body {
-	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+	background: $color_background_body; /* Fallback for when there is no custom background color defined. */
+	@include text-contrast($color_background_body);
 }
 
 hr {
-	background-color: $color__background-hr;
+	background-color: $color_background-hr;
 	border: 0;
 	height: 1px;
 	margin-bottom: 1.5em;

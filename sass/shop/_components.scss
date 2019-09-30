@@ -57,7 +57,7 @@
 		top: 0;
 		position: absolute;
 		left: 0;
-		color: $color__link;
+		color: $color_link_light;
 	}
 }
 
@@ -82,7 +82,7 @@ p.stars {
 			line-height: 1;
 			font-family: "star";
 			content: "\53";
-			color: $color__text-main;
+			color: $color_text_main;
 			text-indent: 0;
 			opacity: .25;
 		}
@@ -90,7 +90,7 @@ p.stars {
 		&:hover {
 			~ a:before {
 				content: "\53";
-				color: $color__text-main;
+				color: $color_text-main;
 				opacity: .25;
 			}
 		}
@@ -100,7 +100,7 @@ p.stars {
 		a {
 			&:before {
 				content: "\53";
-				color: $color__link;
+				color: $color_link_light;
 				opacity: 1;
 			}
 		}
@@ -110,13 +110,13 @@ p.stars {
 		a.active {
 			&:before {
 				content: "\53";
-				color: $color__link;
+				color: $color_link_light;
 				opacity: 1;
 			}
 
 			~ a:before {
 				content: "\53";
-				color: $color__text-main;
+				color: $color_text_main;
 				opacity: .25;
 			}
 		}
@@ -124,7 +124,7 @@ p.stars {
 		a:not(.active) {
 			&:before {
 				content: "\53";
-				color: $color__link;
+				color: $color_link_light;
 				opacity: 1;
 			}
 		}

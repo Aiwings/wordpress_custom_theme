@@ -26,12 +26,43 @@ function _portfolio_customize_register( $wp_customize ) {
 		) );
 	}
 	$wp_customize->add_setting( 'header_bg_color' , array(
-		'default'   => '#2d3748cc',
+		'default'   => '#2d3748',
 		'transport' => 'refresh',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
-	$wp_customize->add_setting( 'header_text_color' , array(
+
+	$wp_customize->add_setting( 'color_primary' , array(
+		'default'   => '#2d3748',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_setting( 'color_background' , array(
+		'default'   => '#ffffff',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_setting( 'color_text_main' , array(
+		'default'   => '#404040',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_setting( 'color_text_dark' , array(
 		'default'   => '#dce0d9',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_setting( 'color_link_light' , array(
+		'default'   => 'royalblue',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_setting( 'color_link_dark' , array(
+		'default'   => 'royalblue',
 		'transport' => 'refresh',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
@@ -59,6 +90,43 @@ function _portfolio_customize_register( $wp_customize ) {
 		'section'    => 'portfolio_homepage',
 		'settings'   => 'header_text_color',
 	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'color_primary', array(
+		'label'      => __( "Couleur Principale", 'portfolio' ),
+		'section'    => 'colors',
+		'settings'   => 'color_primary',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'color_background', array(
+		'label'      => __( "Couleur d'arrière plan", 'portfolio' ),
+		'section'    => 'colors',
+		'settings'   => 'color_background',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'color_text_main', array(
+		'label'      => __( "Couleur du texte (par défaut)", 'portfolio' ),
+		'section'    => 'colors',
+		'settings'   => 'color_text_main',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'color_text_dark', array(
+		'label'      => __( "Couleur du texte (thème sombre)", 'portfolio' ),
+		'section'    => 'colors',
+		'settings'   => 'color_text_dark',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'color_link_light', array(
+		'label'      => __( "Couleur des liens (par défaut)", 'portfolio' ),
+		'section'    => 'colors',
+		'settings'   => 'color_link_light',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'color_link_dark', array(
+		'label'      => __( "Couleur des liens (thème sombre)", 'portfolio' ),
+		'section'    => 'colors',
+		'settings'   => 'color_link_dark',
+	) ) );
+
 	$wp_customize->add_control(
 		new WP_Customize_Image_Control(
 			$wp_customize,
@@ -88,23 +156,32 @@ add_action( 'customize_register', '_portfolio_customize_register' );
 
 function _portfolio_customize_css() {
 ?>
-<style>
+<style>	
 	.home .entry-header {
-		background-image: url(<?php echo get_theme_mod('header_bg_image'); ?>);
-		color : <?php echo get_theme_mod('header_text_color'); ?>;
+	background-image: url(<?php echo get_theme_mod('header_bg_image') ;?>);
 	}
-	.home .entry-header>div {
-		background-color : <?php echo get_theme_mod('header_bg_color') .'cc'; ?>;
-	}
-
 </style>
 <?php
 }
 add_action( 'wp_head', '_portfolio_customize_css');
 
+function wp_scss_set_variables(){
+    $variables = array(
+		'home_bg_color' => get_theme_mod('header_bg_color'),
+		'color_primary'=> get_theme_mod('color_primary'),
+		'color_background_body'=> get_theme_mod('color_background'),
+		'color_text_main' => get_theme_mod('color_text_main'),
+		'color_text_dark' => get_theme_mod('color_text_dark'),
+		'color_link_light' => get_theme_mod('color_link_light'),
+		'color_link_dark' => get_theme_mod('color_link_dark'),
+    );
+    return $variables;
+}
+add_filter('wp_scss_variables','wp_scss_set_variables');
+
 /**
  * Render the site title for the selective refresh partial.
- *
+ *1
  * @return void
  */
 function _portfolio_customize_partial_blogname() {

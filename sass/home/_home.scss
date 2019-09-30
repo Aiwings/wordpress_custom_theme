@@ -1,7 +1,4 @@
 .home {
-    h1 {
-        display: none;
-    }
     .entry-header{
         @include not_mobile {
             background-repeat: no-repeat;
@@ -14,8 +11,8 @@
         }
         >div {
                 padding: 40px 0;    
-                background-color: #2d3748cc;
-            
+                background-color: rgba($home-bg-color,.7);
+                @include text-contrast($home-bg-color);
                 >p {
                     text-align: center;
                     @include not_mobile {

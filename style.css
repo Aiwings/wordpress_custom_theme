@@ -39,6 +39,13 @@
  ## Captions
  ## Galleries
  --------------------------------------------------------------*/
+/*------------------------
+ mixin that calculates if text needs to be light or dark
+ depending on the background color passed.
+ From this W3C document: http://www.webmasterworld.com/r.cgi?f=88&d=9769&url=http://www.w3.org/TR/AERT#color-contrast
+ Color brightness is determined by the following formula: 
+ ((Red value X 299) + (Green value X 587) + (Blue value X 114)) / 1000
+ ------------------------*/
 /*--------------------------------------------------------------
  # Normalize
  --------------------------------------------------------------*/
@@ -324,7 +331,7 @@ template {
  # Typography
  --------------------------------------------------------------*/
 body, button, input, select, optgroup, textarea {
-  color: #404040;
+  color: #505050;
   font-family: 'Oxygen', sans-serif;
   font-size: 16px;
   font-size: 1rem;
@@ -332,6 +339,15 @@ body, button, input, select, optgroup, textarea {
 }
 h1, h2, h3, h4, h5, h6 {
   clear: both;
+}
+h1 {
+  color: #006064;
+}
+h2 {
+  color: #00787e;
+}
+h3 {
+  color: #009197;
 }
 p {
   margin-bottom: 1.5em;
@@ -346,7 +362,7 @@ address {
   margin: 0 0 1.5em;
 }
 pre {
-  background: #eee;
+  background: #f2f2f2;
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 0.9375rem;
@@ -366,7 +382,7 @@ abbr, acronym {
   cursor: help;
 }
 mark, ins {
-  background: #fff9c0;
+  background: #f2f2f2;
   text-decoration: none;
 }
 big {
@@ -385,9 +401,18 @@ html {
 body {
   background: #fff;
   /* Fallback for when there is no custom background color defined. */
+  color: #505050;
+}
+body a {
+  color: royalblue;
+  border-color: royalblue;
+}
+body a:hover {
+  color: #8441e1;
+  border-color: #8441e1;
 }
 hr {
-  background-color: #ccc;
+  background-color: #f2f2f2;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em;
@@ -440,7 +465,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   border: 1px solid;
   border-color: #ccc #ccc #bbb;
   border-radius: 3px;
-  background: #e6e6e6;
+  background: #f2f2f2;
   color: rgba(0, 0, 0, .8);
   font-size: 12px;
   font-size: 0.75rem;
@@ -498,18 +523,18 @@ textarea {
     flex: 0 0 90%;
   }
 }
-.site-header .header-wrapper .site-branding p {
+.site-header .header-wrapper .site-branding p, .site-header .header-wrapper .site-branding h1 {
   flex: 1 1 80%;
   margin: auto;
   font-weight: bold;
   font-size: 18px;
 }
 @media (max-width: 599px) {
-  .site-header .header-wrapper .site-branding p {
+  .site-header .header-wrapper .site-branding p, .site-header .header-wrapper .site-branding h1 {
     font-size: 16px;
   }
 }
-.site-header .header-wrapper .site-branding p a {
+.site-header .header-wrapper .site-branding p a, .site-header .header-wrapper .site-branding h1 a {
   text-decoration: none;
 }
 .site-header .header-wrapper .site-branding .custom-logo-link {
@@ -531,9 +556,18 @@ textarea {
  # Header
  --------------------------------------------------------------*/
 .site-footer {
-  background-color: #fff;
+  background-color: #006064;
+  color: #eee;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
   margin-top: auto;
+}
+.site-footer a {
+  color: #75e5e5;
+  border-color: #75e5e5;
+}
+.site-footer a:hover {
+  color: #759ae5;
+  border-color: #759ae5;
 }
 /*--------------------------------------------------------------
  # Navigation
@@ -542,16 +576,7 @@ textarea {
  ## Links
  --------------------------------------------------------------*/
 a {
-  color: royalblue;
   text-decoration: none;
-}
-a:visited {
-  color: navy;
-  border-color: SlateBlue;
-}
-a:hover, a:focus, a:active {
-  color: SlateBlue;
-  border-color: SlateBlue;
 }
 a:focus {
   outline: thin dotted;
@@ -700,7 +725,7 @@ html, body {
   /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 .screen-reader-text:focus {
-  background-color: #f1f1f1;
+  background-color: #fafafa;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   clip: auto !important;
@@ -915,9 +940,6 @@ embed, iframe, object {
 /*--------------------------------------------------------------
  # HomePage
  --------------------------------------------------------------*/
-.home h1 {
-  display: none;
-}
 @media (min-width: 600px) {
   .home .entry-header {
     background-repeat: no-repeat;
@@ -933,7 +955,16 @@ embed, iframe, object {
 }
 .home .entry-header > div {
   padding: 40px 0;
-  background-color: #2d3748 cc;
+  background-color: rgba(55, 71, 79, .7);
+  color: #eee;
+}
+.home .entry-header > div a {
+  color: #75e5e5;
+  border-color: #75e5e5;
+}
+.home .entry-header > div a:hover {
+  color: #759ae5;
+  border-color: #759ae5;
 }
 .home .entry-header > div > p {
   text-align: center;
